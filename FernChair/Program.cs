@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 namespace FernChair
 {
@@ -9,10 +10,10 @@ namespace FernChair
             Console.WriteLine("INPUT");
             Console.WriteLine("------------------------------------------");
 
-            Int64 numberOfChairs;
+            BigInteger numberOfChairs;
 
             //Allow integer only.
-            if (!Int64.TryParse(Console.ReadLine(), out numberOfChairs))
+            if (!BigInteger.TryParse(Console.ReadLine(), out numberOfChairs))
                 Console.WriteLine("##########{ERROR}: Invalid Input Value.##########");
             else
             {

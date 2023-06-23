@@ -1,6 +1,7 @@
 ﻿using FernChair.Model;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace FernChair
 {
@@ -17,7 +18,7 @@ namespace FernChair
             stores = InitialiseStores();
         }
 
-        public void PackFernChairs(Int64 numOfChairs)
+        public void PackFernChairs(BigInteger numOfChairs)
         {
             // Start Packing
             if (numOfChairs > 0)
