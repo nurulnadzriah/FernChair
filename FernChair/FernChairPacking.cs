@@ -17,7 +17,7 @@ namespace FernChair
             stores = InitialiseStores();
         }
 
-        public void PackFernChairs(int numOfChairs)
+        public void PackFernChairs(Int64 numOfChairs)
         {
             // Start Packing
             if (numOfChairs > 0)
@@ -34,13 +34,16 @@ namespace FernChair
                     foreach (Component requiredComponent in InitialiseComponents())
                     {
                         bool isComponentFound = false;
+                        int currentStore = 0;
 
                         foreach (Store store in stores)
                         {
+                            currentStore += 1;
+
                             Component storeComponent = store.Components.Find(c => c.Name == requiredComponent.Name);
 
                             if (storeComponent is null)
-                            { 
+                            {
                                 // Find the required component at another store
                             }
                             else
@@ -51,14 +54,39 @@ namespace FernChair
                                     storeComponent.Quantity -= quantityToPick;
                                     requiredComponent.Quantity -= quantityToPick;
 
-                                    Console.WriteLine($"{store.Name} | {requiredComponent.Name} = {quantityToPick}");
-
                                     isComponentFound = true;
+
+                                    if (currentStore == stores.Count)
+                                    {
+                                        if (requiredComponent.Quantity <= quantityToPick)
+                                        {
+                                            if (requiredComponent.Quantity > storeComponent.Quantity)
+                                            {
+                                                isComponentFound = false;
+                                                break;
+                                            }
+                                            else
+                                                Console.WriteLine($"{store.Name} | {requiredComponent.Name} = {quantityToPick}");
+                                        }
+                                        else
+                                        {
+                                            isComponentFound = false;
+                                            break;
+                                        }
+                                    }
+                                    else
+                                        Console.WriteLine($"{store.Name} | {requiredComponent.Name} = {quantityToPick}");
+
+
 
                                     if (requiredComponent.Quantity == 0)
                                         break;
                                 }
-                            }                            
+                                else
+                                {
+                                    // Find the required component at another store
+                                }
+                            }
                         }
 
                         if (!isComponentFound) // stop packing immediately
@@ -100,8 +128,8 @@ namespace FernChair
         ///     Store03 has[screw = 2000, wheel = 200, armbar = 100, nut = 1000]
         /// </summary>
         /// <returns></returns>
-        private List<Store> InitialiseStores() 
-        { 
+        private List<Store> InitialiseStores()
+        {
             return new List<Store>()
             {
                 //Store01 has [screw=20, wheel=8, armbar=4, nut=20]
@@ -142,7 +170,7 @@ namespace FernChair
                 }
             };
         }
-        
+
         #endregion
     }
 }

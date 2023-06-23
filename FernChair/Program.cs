@@ -8,14 +8,14 @@ namespace FernChair
         {
             Console.WriteLine("INPUT");
             Console.WriteLine("------------------------------------------");
-            
-            int numberOfChairs;
+
+            Int64 numberOfChairs;
 
             //Allow integer only.
-            if (!int.TryParse(Console.ReadLine(), out numberOfChairs))
+            if (!Int64.TryParse(Console.ReadLine(), out numberOfChairs))
                 Console.WriteLine("##########{ERROR}: Invalid Input Value.##########");
             else
-            { 
+            {
                 FernChairPacking startPacking = new FernChairPacking();
                 startPacking.PackFernChairs(numberOfChairs);
             }
