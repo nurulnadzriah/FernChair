@@ -33,10 +33,5 @@ namespace FernChair
                 //Console.ReadKey();
             }
         }
-
-        private void ReInput()
-        {
-
-        }
     }
 }
