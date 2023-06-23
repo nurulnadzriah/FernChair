@@ -7,27 +7,36 @@ namespace FernChair
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("INPUT");
-            Console.WriteLine("------------------------------------------");
-
-            BigInteger numberOfChairs;
-
-            //Allow integer only.
-            if (!BigInteger.TryParse(Console.ReadLine(), out numberOfChairs))
-                Console.WriteLine("##########{ERROR}: Invalid Input Value.##########");
-            else
+            while (true)
             {
-                FernChairPacking startPacking = new FernChairPacking();
-                startPacking.PackFernChairs(numberOfChairs);
-            }
+                Console.WriteLine("INPUT");
+                Console.WriteLine("------------------------------------------");
 
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("==========================================");
-            Console.WriteLine("Press any key to exit..");
-            Console.WriteLine("==========================================");
-            Console.ReadKey();
+                BigInteger numberOfChairs;
+
+                //Allow integer only.
+                if (!BigInteger.TryParse(Console.ReadLine(), out numberOfChairs))
+                    Console.WriteLine("##########{ERROR}: Invalid Input Value.##########");
+                else
+                {
+                    FernChairPacking startPacking = new FernChairPacking();
+                    startPacking.PackFernChairs(numberOfChairs);
+                }
+
+                //Console.WriteLine("");
+                //Console.WriteLine("");
+                //Console.WriteLine("");
+                Console.WriteLine("==========================================");
+                //Console.WriteLine("Press any key to exit..");
+                //Console.WriteLine("==========================================");
+                Console.WriteLine("");
+                //Console.ReadKey();
+            }
+        }
+
+        private void ReInput()
+        {
+
         }
     }
 }
